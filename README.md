@@ -6,10 +6,28 @@
 
 3) выполните команду composer install
 
-4) вернитесь в папку с проектом cd ../
+4) Создайте копию .env.example.Отредактируйте .env, указав свои настройки
 
-5) запустите контейнеры docker-compose up -d
+DB_CONNECTION=mysql
+DB_HOST=db  
+DB_PORT=3306  
+DB_DATABASE=laravel  
+DB_USERNAME=root  
+DB_PASSWORD=rootpassword
 
+SESSION_DRIVER=file
+
+Эти данные для подключения к базе данных взяты из файла docker-compose.yml.
+
+6) вернитесь в папку с проектом cd ../
+
+7) запустите контейнеры docker-compose up -d
+
+8) Для запускаа миграции используйте команду docker-compose exec app php artisan migrate
+
+9) Для заполнения тестовыми данным используйте docker-compose exec app php artisan db:seed
+
+10) docker-compose exec app php artisan key:generate
 URL:  
 
 базовый URL : http://localhost/
