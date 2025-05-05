@@ -22,7 +22,7 @@ class StockHistoryGetController extends Controller
 
         $validator = Validator::make($request->all(), [
             'warehouse_id' => 'nullable|integer|exists:warehouses,id',
-            'stock_id' => 'nullable|integer|exists:stocks,id',
+            'product_id ' => 'nullable|integer|exists:product,id',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'per_page' => 'nullable|integer|min:1|max:100',
@@ -41,15 +41,15 @@ class StockHistoryGetController extends Controller
             $query->where('warehouse_id', $request->warehouse_id);
         }
 
-        if ($request->has('stock_id')) {
-            $query->where('stocks_id', $request->stock_id);
+        if ($request->has('product_id ')) {
+            $query->where('stocks_id', $request->product_id );
         }
 
-        if ($request->has('start_date')) {
+        if ($request->has('created_at')) {
             $query->where('created_at', '>=', $request->start_date);
         }
 
-        if ($request->has('end_date')) {
+        if ($request->has('created_at')) {
             $query->where('created_at', '<=', $request->end_date . ' 23:59:59');
         }
 
