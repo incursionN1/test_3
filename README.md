@@ -23,11 +23,13 @@ SESSION_DRIVER=file
 
 7) запустите контейнеры docker-compose up -d
 
-8) Для запускаа миграции используйте команду docker-compose exec app php artisan migrate
+8) Установить ключ шифрования для приложения.  docker-compose exec app php artisan key:generate
 
-9) Для заполнения тестовыми данным используйте docker-compose exec app php artisan db:seed
+9) Для запускаа миграции используйте команду docker-compose exec app php artisan migrate
 
-10) docker-compose exec app php artisan key:generate
+10) Для заполнения тестовыми данным используйте docker-compose exec app php artisan db:seed
+
+11) docker-compose exec app php artisan key:generate
 URL:  
 
 базовый URL : http://localhost/
@@ -224,7 +226,13 @@ page - номер страницы
 Получить:
   - Метод: GET  
   - Endpoint: /api/orders  
+Параметры (опционально):
 
+status - статус
+date_from - начальная дата периода
+date_to - конечная дата периода
+per_page - количество записей на одной странице
+page - номер страницы
 Ответ
 
 {
