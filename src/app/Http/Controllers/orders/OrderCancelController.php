@@ -19,7 +19,7 @@ class OrderCancelController extends Controller
     public function __invoke(orders $order, CommonService $service)
     {
 
-        if ($order->status === 'cancelled') {
+        if ($order->status === 'canceled') {
             return response()->json(['message' => 'Заказ уже отменен'], 400);
         }
 
@@ -30,7 +30,7 @@ class OrderCancelController extends Controller
         $oldOrders = $order->load('order_items.product');
         $service->updateStocks($oldOrders->order_items->toArray(),$order->warehouse_id);
 
-        $order->update(['status' => 'cancelled']);
+        $order->update(['status' => 'canceled']);
 
         return response()->json(['message' => 'Заказ успешно отменен', 'order' => $order]);
     }
