@@ -1,6 +1,6 @@
 Краткое руководство
 
-1) Склонируйте приложение git clone https://github.com/incursionN1/test_3/tree/main
+1) Склонируйте приложение git clone https://github.com/incursionN1/test_3
 
 2) перейди в ресурсы  cd test_3/src
 
